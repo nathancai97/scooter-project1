@@ -45,7 +45,7 @@ describe("Scooter", () => {
 
   // dock method
   test("docking a scooter updates its properties correctly", () => {
-    const scooter = new Scooter("Station A");
+    const scooter = new Scooter("Station A", "Nathan");
     const user = { name: "Nathan" };
     scooter.rent(user);
     scooter.dock("Station B");
@@ -54,10 +54,10 @@ describe("Scooter", () => {
   });
 
   // requestRepair method
-  test("should request a repair for a scooter", () => {
-    let scooter = new Scooter();
-    jest.useFakeTimers();
+  test("repairing a scooter updates isBroken", () => {
+    const scooter = new Scooter();
     scooter.isBroken = true;
+    jest.useFakeTimers();
     scooter.requestRepair();
     jest.runAllTimers();
     expect(scooter.isBroken).toBe(false);
@@ -65,10 +65,10 @@ describe("Scooter", () => {
   });
 
   // charge method
-  test("should recharge the scooter and log status messages", () => {
-    let scooter = new Scooter();
-    jest.useFakeTimers();
+  test("charging scooter should charge correctly", () => {
+    const scooter = new Scooter();
     scooter.charge = 50;
+    jest.useFakeTimers();
     scooter.recharge();
     jest.advanceTimersByTime(2000);
     expect(scooter.charge).toBe(60);
