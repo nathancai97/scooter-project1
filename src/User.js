@@ -6,8 +6,17 @@ class User {
     this.age = age;
     this.loggedIn = false;
   }
+
   login(password) {
-    // if()
+    if (password === this.password) {
+      this.loggedIn = true;
+    } else {
+      throw new Error(`incorrect password`);
+    }
+  }
+
+  logout() {
+    this.loggedIn = false;
   }
 }
 

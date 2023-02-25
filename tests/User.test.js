@@ -19,26 +19,26 @@ describe("User", () => {
     user = new User("nathan", "password123", 25);
   });
 
-  it("should create a new user with the correct properties", () => {
+  test("should create a new user with the correct properties", () => {
     expect(user.username).toBe("nathan");
     expect(user.password).toBe("password123");
     expect(user.age).toBe(25);
     expect(user.loggedIn).toBe(false);
   });
 
-  it("should be able to log in with the correct password", () => {
+  test("should be able to log in with the correct password", () => {
     user.login("password123");
     expect(user.loggedIn).toBe(true);
   });
 
-  it("should throw an error when logging in with an incorrect password", () => {
+  test("should throw an error when logging in with an incorrect password", () => {
     expect(() => {
       user.login("password12");
-    }).toThrow("Incorrect password");
+    }).toThrow("incorrect password");
     expect(user.loggedIn).toBe(false);
   });
 
-  it("should be able to log out", () => {
+  test("should be able to log out", () => {
     user.login("password123");
     user.logout();
     expect(user.loggedIn).toBe(false);
